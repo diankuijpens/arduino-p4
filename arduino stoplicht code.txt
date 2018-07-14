@@ -1,0 +1,77 @@
+// Weg 1
+  int groen1 = 2;
+  int oranje1 = 3;
+  int rood1 = 4;
+
+  // Schakelaars Weg 1
+  int knop1 = 8;
+  int knop3 = 10;
+
+  // Weg 2
+  int groen2 = 7;
+  int oranje2 = 6;
+  int rood2 = 5;
+
+  // Schakelaars Weg 2
+  int knop2 = 9;
+  int knop4 = 11;
+
+void setup() {
+  // put your setup code here, to run once:
+
+  pinMode(rood1, OUTPUT);
+  pinMode(oranje1, OUTPUT);
+  pinMode(groen1, OUTPUT);
+
+  pinMode(rood2, OUTPUT);
+  pinMode(oranje2, OUTPUT);
+  pinMode(groen2, OUTPUT);
+
+  pinMode(knop1, INPUT);
+  pinMode(knop2, INPUT);
+
+  digitalWrite(rood1, HIGH);
+  digitalWrite(rood2, HIGH);
+
+}
+
+void loop() {
+
+        if (digitalRead(knop1) == HIGH || digitalRead(knop3) == HIGH) {
+            // Als de knop HIGH is, dus ingedrukt - verander de lichten
+            changeLights(1);
+
+        }
+        if (digitalRead(knop2) == HIGH || digitalRead(knop4) == HIGH) {
+            // Als de knop HIGH is, dus ingedrukt - verander de lichten
+            changeLights(2);
+
+        }
+}
+
+void changeLights(int weg) {
+  // put your main code here, to run repeatedly:
+
+  if (weg == 1) {
+    //Stoplicht aan
+    digitalWrite(rood1, LOW);
+    digitalWrite(groen1, HIGH);
+    delay(5000);
+    digitalWrite(groen1, LOW);
+    digitalWrite(oranje1, HIGH);
+    delay(1000);
+    digitalWrite(oranje1, LOW);
+    digitalWrite(rood1, HIGH);
+  }
+  if (weg == 2) {
+    //Stoplicht aan
+    digitalWrite(rood2, LOW);
+    digitalWrite(groen2, HIGH);
+    delay(5000);
+    digitalWrite(groen2, LOW);
+    digitalWrite(oranje2, HIGH);
+    delay(1000);
+    digitalWrite(oranje2, LOW);
+    digitalWrite(rood2, HIGH);
+  }
+}
